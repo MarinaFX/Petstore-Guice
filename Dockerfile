@@ -4,4 +4,4 @@ LABEL maintainer="github.com/MarinaFX"
 
 COPY ./build/libs/Tema6.war ./webapps/
 
-EXPOSE 80
+EXPOSE 8080

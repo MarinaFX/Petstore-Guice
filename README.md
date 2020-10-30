@@ -3,7 +3,7 @@
 ## This is a simple project of a petstore using Google's framework of IoC Guice. Furthermore, it is going to be deployed on a Docker container using a Jetty server. 
 
 ## The Dockerfile
-As mentioned earlier, this project will be deployed using docker, therefore I made a Dockerfile to optimize the process of pulling images and deploying the project. This is one of my first projects dealing with docker, so humour me if you find any mistakes/bad practices within it!  
+As mentioned earlier, this project will be deployed using docker, therefore I made a Dockerfile to optimize the process of pulling images and deploying the project. This is one of my first projects dealing with docker, humour me if you find any mistakes/bad practices within it!  
 Here follows the Dockerfile: 
 
 ```
@@ -13,7 +13,7 @@ LABEL maintainer="github.com/MarinaFX"
 
 COPY ./build/libs/Tema6.war ./webapps/
 
-EXPOSE 80
+EXPOSE 8080
 ```
 So, basically the Dockerfile is a much faster way to get your container up and running, thus the first line we are pulling the official image of a Jetty server, specifically version 9. 
 
@@ -21,12 +21,12 @@ Then, I am only labeling with my github address (this line is purely optional).
 
 The third line, tells docker the following: "hey docker, in order to run my application I need you to COPY the file `Tema6.war` located in this project at the folder `/build/libs/` TO the folder `/webapps` within the Jetty folder I just downloaded inside you". 
 
-Finally, we are exposing the port 80 of this container in order to access from the browser. Pretty basic right? 
+Finally, we are exposing the port 8080 of this container in order. I will explain about the exposure of the port in bit. So far, pretty basic right? 
 
 ## Wrapping the application into a docker container
 Without further due, here follows the step by step to replicate this project.
 
-1. Clone the project locally by inserting the following command in your terminal: `git clone https://github.com/MarinaFX/Petstore-Guice.git`
+1. Clone the project locally.
 2. Make sure you have docker installed. If not, these links may be useful: 
     1. [Windows](https://docs.docker.com/docker-for-windows/install/) (not really recommended)
     2. [Linux](https://docs.docker.com/engine/install/)
@@ -52,10 +52,18 @@ Without further due, here follows the step by step to replicate this project.
     -rw-rw-r-- 1 marina marina   34 out 14 18:49 settings.gradle
     drwxrwxr-x 3 marina marina 4,0K out 14 18:49 src/
     ``` 
-4. Before we build our image, run following command in the terminal: `./gradlew war`. This will generate the necessary .war file to be deployed on Jetty
-5. To build the image of the container run in the terminal: `docker build . -t petstore:latest`
-6. After building the image, execute the container: `docker run -d -p 8080:8080 petstore`
-7. Test it => [here](http://localhost:8080/Tema6)
+4. To build the image of the container run in the terminal: `docker build . -t petstore:latest`
+    - Alright, so remember about that Dockerfile I mentioned above? Here, were are telling docker to `build` that docker file (execute it) within our current directory, that's why there a dot right in the middle, that dot is a representation of the current dir. Then, by writing `-t` we are tagging this image as 'petstore:latest'. petstore is an example name, whilst latest refers about the version of this image. 
+    
+5. After building the image, execute the container: `docker run -d -p 8080:8080 petstore`
+    - Okay, so remember when we exposed the port 8080 in the Dockerfile? Here's why: this command, basically tell the docker to run our image, to turn this image into a container. The `-d or --detach` param tells docker to run this container in the background, that's why your terminal is free to use after you ran this command. Now here is the cat's jump, when we tell docker `-p or --publish` this means we are opening the following ports to be accessed. "Wait, but didn't you just opened? when you wrote EXPOSE 8080 in the dockerfile?" Kind of... Here is the deal: 
+        - EXPOSE xxxx: this tells docker to open this port INTERNALLY, inside Docker. This means only other containers will be able to access that port. 
+        - EXPOSE xxxx + -p xxxx: when both are used, this tells docker: "hey docker, not only I want you to open this port for only other containers, but also I want you to PUBLISH (--publish) this port wide open to the world"
+        - Neither EXPOSE xxx nor -p: this means this container will not be accessed neither internally nor externally. 
+        
+    - "Okay, but you wrote two times: -p 8080:8080. You are double opening the door?" Could be right? but not, actually when we write 8080:8080 this means we want to map the CONTAINER port 8080 to OUR MACHINE port 8080. In other words, no one could access our container in 8080 because its local right? So we map its 8080 port to ours 8080 :D 
+    
+6. Test it [here](http://localhost:8080/Tema6)
 
 The image of the container can also be found by clicking [here](https://hub.docker.com/r/marifx/petstore-jetty)
 

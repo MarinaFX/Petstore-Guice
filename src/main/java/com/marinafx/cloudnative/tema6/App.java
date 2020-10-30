@@ -32,10 +32,10 @@ public class App {
             UUID grey = petstore.addPet("Grey", "Terrier", 10);
             UUID polly = petstore.addPet("Polly", "Pug", 13);
 
-            List<Optional<Pet>> petsFound = petstore.searchByAge(7);
+            List<Pet> petsFound = petstore.searchByAge(7);
 
-            for (Optional<Pet> pet : petsFound){
-                pet.ifPresent(value -> System.out.println(value.toString()));
+            for (Pet pet : petsFound){
+                System.out.println(pet.toString());
             }
 
             petstore.doBath(doc, true, true);

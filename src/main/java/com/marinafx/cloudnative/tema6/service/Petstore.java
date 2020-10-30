@@ -73,15 +73,19 @@ public class Petstore {
         return false;
     }
 
-    public List<Optional<Pet>> searchByAge(int age){
+    public List<Pet> searchByAge(int age){
         if (age < 0)
             throw new IllegalArgumentException("The age provided cannot be negative");
 
-        List<Optional<Pet>> petsFound = new ArrayList<>();
+        List<Pet> petsFound = new ArrayList<>();
 
         for (Pet pet : petList){
-            if (age == pet.getAge())
-                petsFound.add(Optional.of(pet));
+            Optional<Pet> petFound = Optional.ofNullable(pet);
+            if (petFound.isPresent()){
+                if (age == petFound.get().getAge()) {
+                    petsFound.add(pet);
+                }
+            }
         }
 
         return petsFound;
