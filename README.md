@@ -1,4 +1,4 @@
-# Guice's Petstore
+# <samp> Guice's Petstore <img src="https://raw.githubusercontent.com/MarinaFX/MarinaFX/master/gifs/oie_2215623KLveOSaL.gif" width="100px"/></samp>
 
 ## This is a simple project of a petstore using Google's framework of IoC Guice. Furthermore, it is going to be deployed on a Docker container using a Jetty server. 
 
@@ -52,9 +52,10 @@ Without further due, here follows the step by step to replicate this project.
     -rw-rw-r-- 1 marina marina   34 out 14 18:49 settings.gradle
     drwxrwxr-x 3 marina marina 4,0K out 14 18:49 src/
     ``` 
-4. To build the image of the container run in the terminal: `docker build . -t petstore:latest`
-5. After building the image, execute the container: `docker run -d -p 8080:8080 petstore`
-6. Test it => [here](http://localhost:8080/Tema6)
+4. Before we build our image, run following command in the terminal: `./gradlew war`. This will generate the necessary .war file to be deployed on Jetty
+5. To build the image of the container run in the terminal: `docker build . -t petstore:latest`
+6. After building the image, execute the container: `docker run -d -p 8080:8080 petstore`
+7. Test it => [here](http://localhost:8080/Tema6)
 
 The image of the container can also be found by clicking [here](https://hub.docker.com/r/marifx/petstore-jetty)
 
