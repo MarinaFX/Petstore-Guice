@@ -1,0 +1,10 @@
+*.class
+
+.idea
+.gradle
+/build/
+
+!gradle-wrapper.jar
+
+!index.html
+!main.css

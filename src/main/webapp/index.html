@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Petstore</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rokkitt&display=swap">
+</head>
+<body>
+
+<div class="outdoor">
+    <div class="sponsors">
+        <span class="poweredBy">powered by: </span>
+        <div class="jetty"></div>
+        <div class="guice"></div>
+    </div>
+    <div class="letters">
+        <span class="w">W</span>
+        <span class="e">e</span>
+        <span class="l">l</span>
+        <span class="c">c</span>
+        <span class="o">o</span>
+        <span class="m">m</span>
+        <span class="e2">e</span>
+        <span class="NBSP1"> </span>
+        <span class="t">t</span>
+        <span class="o2">o</span>
+        <span class="NBSP2"> </span>
+        <span class="g">G</span>
+        <span class="u">u</span>
+        <span class="i">i</span>
+        <span class="c2">c</span>
+        <span class="e3">e</span>
+        <span class="apostrophe">’</span>
+        <span class="s">s</span>
+        <span class="NBSP3"> </span>
+        <span class="p">P</span>
+        <span class="e4">e</span>
+        <span class="t2">t</span>
+        <span class="s2">s</span>
+        <span class="t3">t</span>
+        <span class="o3">o</span>
+        <span class="r">r</span>
+        <span class="e5">e</span>
+    </div>
+</div>
+
+
+<div class="grid-container">
+        <div class="card">
+            <form method="post" name="Add Pet Form" id="addPetForm">
+                <p class="cardTitle"> Add Pet</p>
+                <label for="inputPetName">
+                    <input class="input" id="inputPetName" type="text" name="petName" placeholder=" Pet Name">
+                </label> <br>
+
+                <label for="inputBreed">
+                    <input class="input" id="inputBreed" type="text" name="petBreed" placeholder=" Pet Breed">
+                </label> <br>
+
+                <label for="inputAge">
+                    <input class="input" id="inputAge" type="text" name="petAge" placeholder=" Pet Age">
+                </label> <br>
+
+                <button class="button" type="submit" name="button" value="add" formaction="petstore"> Register </button>
+            </form>
+        </div>
+
+        <div class="card">
+            <form method="post" name="Do Bath" id="doBathForm">
+                <p class="cardTitle"> Do Bath</p>
+                <label for="bathPetId">
+                    <input class="input" id="bathPetId" type="text" name="petId" placeholder=" Pet Id">
+                </label> <br>
+
+                <label for="perfume"></label>
+
+                <select class="drop-down-list" name="perfume" id="perfume">
+                    <option value="true"> W/ perfume </option>
+                    <option value="false"> No perfume </option>
+                </select> <br>
+
+                <label for="water"></label>
+
+                <select class="drop-down-list" name="water" id="water">
+                    <option value="true"> With water </option>
+                    <option value="false"> No Water </option>
+                </select> <br>
+
+
+                <button class="button" type="submit" name="button" value="doBath" formaction="petstore"> Do Bath! </button>
+            </form>
+        </div>
+
+        <div class="card">
+            <form method="post" name="get History" id="getHistoryForm">
+                <p class="cardTitle"> Get History </p>
+                <input type="hidden" name="var" value="1" />
+                <button class="onlyButton" type="submit" name="button" value="getHistory" formaction="petstore"> Get History </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="card">
+            <form method="post" name="Remove Pet form" id="removeForm">
+                <p class="cardTitle"> Remove Pet</p>
+                <label for="removePetId">
+                    <input class="input" id="removePetId" type="text" name="petId" placeholder=" Pet Id">
+                </label> <br>
+
+                <button class="button" type="submit" name="button" value="remove" formaction="petstore"> Remove </button>
+            </form>
+        </div>
+
+        <div class="card">
+            <form method="post" name="Do Haircut" id="doHaircutForm">
+                <p class="cardTitle"> Do Haircut</p>
+                <label for="haircutPetId">
+                    <input class="input" id="haircutPetId" type="text" name="petId" placeholder=" Pet Id">
+                </label> <br>
+
+                <label for="hair"></label>
+
+                <select class="drop-down-list" name="hair" id="hair">
+                    <option value="short"> Short </option>
+                    <option value="long"> Long </option>
+                </select> <br>
+
+
+                <button class="button" type="submit" name="button" value="doHaircut" formaction="petstore"> Do Haircut! </button>
+            </form>
+        </div>
+
+        <div class="card">
+            <form method="post" name="get Revenues" id="getRevenuesForm">
+                <p class="cardTitle"> Get Revenues </p>
+                <input type="hidden" name="var" value="1" />
+                <button class="onlyButton" type="submit" name="button" value="getRevenues" formaction="petstore"> Get Revenues </button>
+            </form>
+        </div>
+    </div>
+
+</body>
+<footer >
+    <div class="footer">
+        <div>
+            <p> Cloud Native - Sixth Assignment</p>
+        </div>
+
+        <div>
+            <p>Last modified: <span id="demo"></span></p>
+
+            <script>
+                document.getElementById("demo").innerHTML = document.lastModified;
+            </script>
+        </div>
+
+        <div>
+            <p> Made by: Marina De Pazzi </p>
+        </div>
+    </div>
+</footer>
+</html>
